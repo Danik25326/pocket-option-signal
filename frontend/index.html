@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Option Signal Bot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> Pocket Option Signal Bot</h1>
+            <div class="status-bar">
+                <div class="status-item" id="connection-status">
+                    <span class="status-dot"></span>
+                    <span>Підключення...</span>
+                </div>
+                <div class="status-item" id="last-update">
+                    <i class="far fa-clock"></i>
+                    <span>Оновлення: --:--:--</span>
+                </div>
+                <div class="status-item" id="total-signals">
+                    <i class="fas fa-signal"></i>
+                    <span>Сигналів сьогодні: 0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="confidence-filter">
+                    <i class="fas fa-chart-line"></i> Мінімальна впевненість:
+                </label>
+                <input type="range" id="confidence-filter" min="70" max="95" value="70">
+                <span id="confidence-value">70%</span>
+            </div>
+            
+            <div class="filter-group">
+                <label for="timeframe-filter">
+                    <i class="fas fa-clock"></i> Таймфрейм:
+                </label>
+                <select id="timeframe-filter">
+                    <option value="all">Всі</option>
+                    <option value="60">1 хвилина</option>
+                    <option value="300">5 хвилин</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="direction-filter">
+                    <i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i> Напрямок:
+                </label>
+                <select id="direction-filter">
+                    <option value="all">Всі</option>
+                    <option value="up">Вверх (CALL)</option>
+                    <option value="down">Вниз (PUT)</option>
+                </select>
+            </div>
+        </div>
+
+        <main>
+            <div class="signals-container">
+                <h2><i class="fas fa-bell"></i> Актуальні сигнали</h2>
+                <div id="signals-list" class="signals-list">
+                    <!-- Сигнали будуть додані через JavaScript -->
+                    <div class="no-signals">
+                        <i class="fas fa-search"></i>
+                        <p>Завантаження сигналів...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <h2><i class="fas fa-chart-bar"></i> Статистика</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Успішність</h3>
+                            <p class="stat-value" id="success-rate">--%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon total">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Всього сигналів</h3>
+                            <p class="stat-value" id="total-generated">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon time">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Наступне оновлення</h3>
+                            <p class="stat-value" id="next-update">5:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="info-panel">
+            <h3><i class="fas fa-info-circle"></i> Як користуватися</h3>
+            <ul>
+                <li><strong>Сигнали оновлюються кожні 5 хвилин</strong></li>
+                <li>Показуються лише сигнали з впевненістю > 70%</li>
+                <li>Червоний колір - сигнал на продаж (PUT)</li>
+                <li>Зелений колір - сигнал на покупку (CALL)</li>
+                <li>Використовуйте сигнали для ручної торгівлі на Pocket Option</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>© 2024 Pocket Option Signal Bot | AI-powered trading signals</p>
+            <p class="disclaimer">
+                <i class="fas fa-exclamation-triangle"></i>
+                Дисклеймер: Цей бот призначений лише для інформаційних цілей. 
+                Торгівля бінарними опціонами пов'язана з ризиком втрати коштів.
+            </p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
